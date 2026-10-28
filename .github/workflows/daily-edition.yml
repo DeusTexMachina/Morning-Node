@@ -1,0 +1,33 @@
+name: Print Daily Edition
+
+on:
+  schedule:
+    # Runs at 11:00 UTC every day (6:00 AM Central Time)
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Allows manual trigger from the GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Live News & Generate JSON
+        run: node fetch-news.mjs
+
+      - name: Commit & Push Daily Edition
+        run: |
+          git config --global user.name "Morning Node Press"
+          git config --global user.email "bot@github.com"
+          git add news-data.json
+          git commit -m "🗞️ Daily Edition: $(date +'%Y-%m-%d')" || exit 0
+          git push
