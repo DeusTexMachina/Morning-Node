@@ -34,6 +34,51 @@
         }
     </script>
 
+document.addEventListener('DOMContentLoaded', async function() {
+    // 1. Fetch the static daily edition
+    try {
+        const response = await fetch('./news-data.json');
+        if (response.ok) {
+            const data = await response.json();
+            
+            // Populate Date
+            document.querySelectorAll('.newspaper-date').forEach(el => {
+                el.textContent = `Dallas, ${data.date}`;
+            });
+
+            // Populate Weather Cover
+            if (data.weather) {
+                const weatherBanner = document.getElementById('current-weather-banner');
+                if (weatherBanner) {
+                    weatherBanner.textContent = `CURRENT: ${data.weather.temp}°F (DFW Airport)`;
+                }
+            }
+
+            // Populate Wire Stories
+            const wireContainer = document.getElementById('wire-stories');
+            if (wireContainer && data.worldNews.length) {
+                wireContainer.innerHTML = data.worldNews.map(item => `
+                    <div class="border-b border-ink pb-2">
+                        <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">THE WIRE</span>
+                        <h3 class="font-bold text-sm leading-tight mt-1">${item.title}</h3>
+                        <p class="mt-1">${item.snippet}</p>
+                    </div>
+                `).join('');
+            }
+        }
+    } catch (err) {
+        console.warn("Using fallback static articles.", err);
+    }
+
+    // 2. NOW Initialize St.PageFlip (after dynamic text fills the containers)
+    const flipBookElement = document.getElementById('flip-book');
+    const pageFlip = new St.PageFlip(flipBookElement, {
+        /* ... existing configuration ... */
+    });
+    pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+    flipBookElement.classList.add('is-ready');
+});    
+    
     <style>
         body {
             background-color: #2c2c2c;
