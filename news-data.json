@@ -1,0 +1,51 @@
+{
+  "date": "Wednesday, October 28, 2026",
+  "weather": {
+    "temp": 78,
+    "wind": 10.5,
+    "daily": {
+      "time": [
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03"
+      ],
+      "temperature_2m_max": [
+        83.9,
+        81.8,
+        74.2,
+        72,
+        80.3,
+        85,
+        71.7
+      ],
+      "temperature_2m_min": [
+        61.4,
+        65.9,
+        65.1,
+        64.7,
+        65.7,
+        70.5,
+        64.3
+      ],
+      "weathercode": [
+        3,
+        3,
+        51,
+        61,
+        3,
+        95,
+        51
+      ]
+    }
+  },
+  "worldNews": [],
+  "dallasNews": [],
+  "sports": {
+    "title": "Oklahoma City Thunder at Dallas Mavericks",
+    "status": "Wed, October 28th at 9:30 PM EDT"
+  }
+}
