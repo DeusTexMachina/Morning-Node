@@ -34,51 +34,6 @@
         }
     </script>
 
-document.addEventListener('DOMContentLoaded', async function() {
-    // 1. Fetch the static daily edition
-    try {
-        const response = await fetch('./news-data.json');
-        if (response.ok) {
-            const data = await response.json();
-            
-            // Populate Date
-            document.querySelectorAll('.newspaper-date').forEach(el => {
-                el.textContent = `Dallas, ${data.date}`;
-            });
-
-            // Populate Weather Cover
-            if (data.weather) {
-                const weatherBanner = document.getElementById('current-weather-banner');
-                if (weatherBanner) {
-                    weatherBanner.textContent = `CURRENT: ${data.weather.temp}°F (DFW Airport)`;
-                }
-            }
-
-            // Populate Wire Stories
-            const wireContainer = document.getElementById('wire-stories');
-            if (wireContainer && data.worldNews.length) {
-                wireContainer.innerHTML = data.worldNews.map(item => `
-                    <div class="border-b border-ink pb-2">
-                        <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">THE WIRE</span>
-                        <h3 class="font-bold text-sm leading-tight mt-1">${item.title}</h3>
-                        <p class="mt-1">${item.snippet}</p>
-                    </div>
-                `).join('');
-            }
-        }
-    } catch (err) {
-        console.warn("Using fallback static articles.", err);
-    }
-
-    // 2. NOW Initialize St.PageFlip (after dynamic text fills the containers)
-    const flipBookElement = document.getElementById('flip-book');
-    const pageFlip = new St.PageFlip(flipBookElement, {
-        /* ... existing configuration ... */
-    });
-    pageFlip.loadFromHTML(document.querySelectorAll('.page'));
-    flipBookElement.classList.add('is-ready');
-});    
-    
     <style>
         body {
             background-color: #2c2c2c;
@@ -90,7 +45,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             background-image: radial-gradient(circle, #3d3d3d, #1c1c1c);
         }
 
-        /* Prevent 0x0 size calculation bug during init while stopping FOUC */
         .flip-book {
             visibility: hidden;
             opacity: 0;
@@ -180,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     <header class="w-full max-w-5xl flex justify-between items-center mb-2 px-2 md:px-4 flex-shrink-0 z-10">
         <div>
             <h2 class="text-xs md:text-sm font-bold tracking-widest uppercase text-gray-200">The Dallas Morning Node</h2>
-            <p id="page-indicator" class="text-[0.65rem] text-gray-400 font-mono tracking-wider">LOADING...</p>
+            <p id="page-indicator" class="text-[0.65rem] text-gray-400 font-mono tracking-wider">LOADING EDITION...</p>
         </div>
         <div class="flex items-center gap-2 md:gap-3">
             <span class="text-[0.6rem] text-gray-400 hidden sm:inline uppercase">Keys: [←] / [→]</span>
@@ -200,22 +154,20 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <p class="text-[0.55rem] uppercase tracking-widest mb-1 font-bold">Vol. I... No. 001</p>
                         <h1 class="font-masthead text-4xl md:text-5xl lg:text-6xl leading-none mb-1">The Dallas Morning Node</h1>
                         <div class="flex justify-between items-center text-[0.45rem] md:text-[0.5rem] uppercase border-t border-b border-ink py-1 font-bold">
-                            <span>Dallas, Oct 28, 2026</span>
-                            <span>Published Daily at 8:00 AM CT</span>
+                            <span class="live-date">Dallas, Texas</span>
+                            <span>Published Daily at 6:00 AM CT</span>
                             <span>Two Cents</span>
                         </div>
                     </div>
 
-                    <div class="flex-shrink-0 mb-3">
-                        <h2 class="text-xl md:text-3xl font-black leading-tight mb-1 text-center uppercase">Trinity River Project<br>Shatters Expectations</h2>
-                        <h3 class="text-xs md:text-sm italic text-center text-inkLight">Federal Funding Secures Massive Park Expansion</h3>
+                    <div class="flex-shrink-0 mb-3 text-center">
+                        <h2 id="front-headline" class="text-xl md:text-2xl font-black leading-tight mb-1 uppercase">Loading Daily Headlines...</h2>
+                        <h3 id="front-subhead" class="text-xs italic text-inkLight">Dispatches from the wire</h3>
                     </div>
 
                     <div class="newspaper-cols">
-                        <img src="https://placehold.co/400x250/222/f6f3ea?text=Trinity+River+Park" alt="Trinity River" class="w-full mb-2 grayscale opacity-90 border border-ink p-1">
-                        <p class="drop-cap">D<span class="uppercase font-bold text-[0.6rem]">allas</span> — In a monumental announcement this morning, the Mayor's office confirmed an unprecedented injection of federal infrastructure funds slated entirely for the Trinity River corridor.</p>
-                        <p>"This transforms Dallas from a concrete jungle into a true green metropolis," the Mayor stated during the 8:00 AM press conference.</p>
-                        <p>Meanwhile, national markets brace for impact as the tech sector sees sweeping regulatory changes coming from Washington.</p>
+                        <img src="https://placehold.co/400x250/222/f6f3ea?text=Dallas+Skyline" alt="Front Illustration" class="w-full mb-2 grayscale opacity-90 border border-ink p-1">
+                        <p id="front-body" class="drop-cap">T<span class="uppercase font-bold text-[0.6rem]">he press</span> is compiling today's dispatches across the Metroplex and national bureaus. Stay tuned for breaking dispatches.</p>
                     </div>
                 </div>
             </div>
@@ -226,21 +178,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div class="section-header">
                         <h2 class="text-lg md:text-xl font-black uppercase tracking-widest">Local & Metro</h2>
                     </div>
-                    <div class="newspaper-cols h-full">
-                        <h3 class="font-bold text-sm md:text-base leading-tight mb-1">City Council Debates DART Expansion</h3>
-                        <p>Tensions ran high at City Hall late Tuesday as council members clashed over the proposed DART Silver Line extension. Residents from North Dallas voiced concerns regarding noise pollution, while transit advocates argued the economic benefits are too vast to ignore.</p>
-                        
-                        <div class="border-t border-b border-ink py-2 my-2 bg-black/5 px-2">
-                            <h4 class="font-bold text-xs uppercase text-center mb-1">Metro Briefs</h4>
-                            <ul class="text-[0.6rem] list-disc pl-3 mb-0">
-                                <li>Deep Ellum street repairs to conclude by Friday.</li>
-                                <li>New public library branch approved for Oak Cliff.</li>
-                                <li>State Fair organizers report record attendance.</li>
-                            </ul>
-                        </div>
-
-                        <h3 class="font-bold text-sm md:text-base leading-tight mb-1 mt-2">Texas Power Grid Holding Steady</h3>
-                        <p>ERCOT officials confirm that despite early temperature drops, the state's power infrastructure is operating with a comfortable surplus.</p>
+                    <div id="metro-stories" class="newspaper-cols h-full">
+                        <!-- Populated by JS -->
+                        <h3 class="font-bold text-sm leading-tight mb-1">City Hall Roundup</h3>
+                        <p>Municipal deliberations continue downtown as regional transport initiatives see new development.</p>
                     </div>
                 </div>
             </div>
@@ -251,20 +192,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div class="section-header">
                         <h2 class="text-lg md:text-xl font-black uppercase tracking-widest">The Wire</h2>
                     </div>
-                    <div class="flex flex-col gap-3 flex-grow overflow-hidden">
+                    <div id="wire-stories" class="flex flex-col gap-3 flex-grow overflow-hidden">
+                        <!-- Populated dynamically -->
                         <div class="border-b border-ink pb-2">
-                            <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">AP NEWS</span>
-                            <h3 class="font-bold text-sm md:text-md mt-1 leading-tight">Global Summit Reaches Historic Emissions Target</h3>
-                            <p class="mt-1">GENEVA — World leaders concluded the grueling 72-hour summit with a binding resolution to slash industrial emissions by an additional 15% before 2030.</p>
-                        </div>
-                        <div class="border-b border-ink pb-2">
-                            <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">REUTERS</span>
-                            <h3 class="font-bold text-sm md:text-md mt-1 leading-tight">Central Banks Signal Rate Cuts</h3>
-                            <p class="mt-1">LONDON — Anticipation of synchronized rate cuts by the Bank of England and the Federal Reserve sent shockwaves of optimism through markets.</p>
-                        </div>
-                        <div class="mt-auto border-4 border-double border-ink p-2 text-center bg-gray-200">
-                            <h4 class="font-bold text-xs uppercase mb-1">International Briefs</h4>
-                            <p class="text-[0.55rem] italic mb-0">Election results verified in Brazil • Tech giant faces antitrust probe in EU • Breakthrough in orbital satellite recovery.</p>
+                            <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">AP WIRE</span>
+                            <h3 class="font-bold text-sm leading-tight mt-1">Dispatches arriving momentarily...</h3>
                         </div>
                     </div>
                 </div>
@@ -277,8 +209,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h2 class="text-lg md:text-xl font-black uppercase tracking-widest">Business & Finance</h2>
                     </div>
                     <div class="flex flex-col flex-grow">
-                        <h3 class="font-bold text-base md:text-lg mb-1 leading-tight">Silicon Prairie Continues Boom</h3>
-                        <p>Two more tech firms have announced headquarters relocations to the Plano/Frisco corridor, cementing DFW's status as a premier technology hub.</p>
+                        <h3 class="font-bold text-base md:text-lg mb-1 leading-tight">Silicon Prairie Continues Expansion</h3>
+                        <p>Tech infrastructure throughout the Collin County corridor continues steady industrial expansion amid steady national trading volume.</p>
 
                         <div class="w-full bg-white border border-ink p-2 mb-2 mt-2">
                             <h4 class="text-xs font-bold uppercase mb-2 border-b border-ink pb-1">Market Snapshot</h4>
@@ -293,7 +225,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                         <div class="newspaper-cols text-[0.65rem] mt-auto">
                             <p class="font-bold mb-1 border-b border-ink">Real Estate Watch</p>
-                            <p>Residential inventory in Collin County grew by 4% this month, hinting at a slight cooling for prospective buyers.</p>
+                            <p>North Texas commercial real estate reports stable yields heading into the final quarter of operations.</p>
                         </div>
                     </div>
                 </div>
@@ -307,19 +239,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                     </div>
                     <div class="newspaper-cols h-full">
                         <div class="mb-4">
-                            <p class="text-[0.45rem] uppercase font-bold tracking-widest text-gray-600 mb-1">Global Perspectives</p>
-                            <h3 class="font-bold text-sm md:text-base leading-tight mb-1">A Northern View on Civic Healthcare</h3>
-                            <p class="italic text-[0.6rem] mb-1 font-bold">By Dr. Aris Thorne</p>
-                            <p>As debates continue regarding public health expansions, it is worth examining the undeniable stability a unified system provides during times of economic turbulence...</p>
-                        </div>
-                        <div class="mb-2">
-                            <p class="text-[0.45rem] uppercase font-bold tracking-widest text-gray-600 mb-1">BBC Syndicated</p>
-                            <h3 class="font-bold text-sm md:text-base leading-tight mb-1">Climate Action Requires Local Champions</h3>
-                            <p>It is not enough for international bodies to decree targets. The true battle against a warming planet is fought in municipal chambers, deciding on green transit and zoning.</p>
+                            <p class="text-[0.45rem] uppercase font-bold tracking-widest text-gray-600 mb-1">Editorial Board</p>
+                            <h3 class="font-bold text-sm md:text-base leading-tight mb-1">Civic Progress in a Modern Prairie</h3>
+                            <p class="italic text-[0.6rem] mb-1 font-bold">By The Editors</p>
+                            <p>As the Trinity River basin undergoes its renaissance, our community faces the age-old challenge of balancing bold expansion with preservation of civic identity...</p>
                         </div>
                         <div class="border-t-2 border-ink pt-2 mt-4 bg-black/5 p-2">
                             <h4 class="font-bold text-xs uppercase text-center mb-1">Letters to the Editor</h4>
-                            <p class="text-[0.55rem] italic mb-0">"The city's focus on the Trinity River is commendable, but we must not forget the crumbling sidewalks in East Dallas." — M. Jenkins</p>
+                            <p class="text-[0.55rem] italic mb-0">"The digital edition of The Morning Node remains a breath of fresh air on the morning commute." — T. Davis, Oak Cliff</p>
                         </div>
                     </div>
                 </div>
@@ -333,27 +260,24 @@ document.addEventListener('DOMContentLoaded', async function() {
                     </div>
                     <div class="flex flex-col flex-grow gap-2">
                         <div>
-                            <h3 class="font-black text-xl leading-none mb-1">MAVS STUN AT THE BUZZER</h3>
-                            <p class="text-[0.65rem] mb-1">Luka delivers a masterful 40-point performance to edge out the Nuggets 112-110 in a thrilling overtime finish at the AAC.</p>
+                            <h3 id="sports-headline" class="font-black text-lg md:text-xl leading-none mb-1">NORTH TEXAS SPORTS BULLETIN</h3>
+                            <p id="sports-status" class="text-[0.65rem] mb-1">Scores and divisional rankings from across Texas athletics.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-2 text-[0.55rem] font-mono mb-2">
                             <div class="border border-ink bg-white p-1">
-                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">NFL - SUNDAY</p>
-                                <div class="flex justify-between"><span>COWBOYS (5-2)</span><b>28</b></div>
-                                <div class="flex justify-between"><span>EAGLES (4-3)</span><span>24</span></div>
+                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">NFL</p>
+                                <div class="flex justify-between"><span>COWBOYS</span><b>Active</b></div>
                             </div>
                             <div class="border border-ink bg-white p-1">
-                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">MLB - FINAL</p>
-                                <div class="flex justify-between"><span>RANGERS (88-74)</span><b>6</b></div>
-                                <div class="flex justify-between"><span>ASTROS (85-77)</span><span>2</span></div>
+                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">NBA</p>
+                                <div class="flex justify-between"><span>MAVERICKS</span><b>Active</b></div>
                             </div>
                             <div class="border border-ink bg-white p-1 col-span-2">
-                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">NHL - FINAL (OT)</p>
-                                <div class="flex justify-between"><span>STARS (6-1-1)</span><b>4</b></div>
-                                <div class="flex justify-between"><span>AVALANCHE (5-3)</span><span>3</span></div>
+                                <p class="font-bold border-b border-ink mb-1 bg-gray-200">NHL</p>
+                                <div class="flex justify-between"><span>STARS</span><b>Active</b></div>
                             </div>
                         </div>
-                        <p class="text-justify mt-auto">The Cowboys look to carry their momentum into their bye week, while the Stars prepare for a grueling four-game road trip across the Canadian provinces.</p>
+                        <p class="text-justify mt-auto">Tune in across local broadcasts for post-game recaps and standings analysis.</p>
                     </div>
                 </div>
             </div>
@@ -365,20 +289,17 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h2 class="text-lg md:text-xl font-black uppercase tracking-widest">Lifestyle & Arts</h2>
                     </div>
                     <div class="newspaper-cols h-full">
-                        <h3 class="font-bold text-base leading-tight mb-1">A New Golden Age of Tex-Mex</h3>
+                        <h3 class="font-bold text-base leading-tight mb-1">The Culinary Trail</h3>
                         <div class="text-[0.6rem] mb-1 tracking-widest font-sans">★★★★☆</div>
-                        <p>Chef Maria Gonzalez’s highly anticipated <em>El Cielo</em> opened its doors in Oak Lawn this week, offering a stunning, elevated take on local staples. The brisket enchiladas are nothing short of revelatory.</p>
+                        <p>Dallas bistros continue an imaginative embrace of seasonal roots, bringing classic Texas fare together with modern international flavors.</p>
                         
                         <div class="w-full border-t border-b border-ink py-2 my-2 bg-black/5 px-2">
-                            <h4 class="font-bold text-xs uppercase text-center mb-1">Arts District Calendar</h4>
+                            <h4 class="font-bold text-xs uppercase text-center mb-1">Arts Calendar</h4>
                             <ul class="text-[0.6rem] list-none mb-0">
-                                <li class="mb-1"><strong>DMA:</strong> Impressionist Exhibit (Ends Sun)</li>
-                                <li class="mb-1"><strong>Symphony:</strong> Beethoven's 5th (Fri/Sat)</li>
-                                <li><strong>Wyly:</strong> Macbeth Reimagined (All Week)</li>
+                                <li class="mb-1"><strong>DMA:</strong> Permanent Collections (Daily)</li>
+                                <li class="mb-1"><strong>Meyerson:</strong> Symphony Season (Weekends)</li>
                             </ul>
                         </div>
-                        <h3 class="font-bold text-base leading-tight mb-1 mt-2">Fall Fashion Hits the Streets</h3>
-                        <p>As the Texas heat finally breaks, lightweight tweeds and oversized knits are dominating the walkways of Highland Park Village.</p>
                     </div>
                 </div>
             </div>
@@ -390,26 +311,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h2 class="text-lg md:text-xl font-black uppercase tracking-widest">The Funnies</h2>
                     </div>
                     <div class="flex flex-col gap-2 flex-grow h-full justify-between">
-                        <div class="flex flex-col w-full h-1/4">
-                            <h4 class="font-bold text-[0.55rem] uppercase tracking-wide">Penny Arcade</h4>
-                            <div class="flex-grow border-[1.5px] border-ink bg-white flex flex-row divide-x-[1.5px] divide-ink">
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Panel 1</div>
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Panel 2</div>
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Punchline</div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col w-full h-1/4">
-                            <h4 class="font-bold text-[0.55rem] uppercase tracking-wide">XKCD</h4>
-                            <div class="flex-grow border-[1.5px] border-ink bg-white flex items-center justify-center">
-                                <div class="text-center text-gray-400 italic text-[0.55rem]">Stick figures doing math poorly</div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col w-full h-1/4">
-                            <h4 class="font-bold text-[0.55rem] uppercase tracking-wide">PvP</h4>
-                            <div class="flex-grow border-[1.5px] border-ink bg-white flex flex-row divide-x-[1.5px] divide-ink">
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Cole</div>
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Brent</div>
-                                <div class="flex-1 flex items-center justify-center text-gray-400 italic text-[0.55rem]">Skull</div>
+                        <div class="flex flex-col w-full h-1/3">
+                            <h4 class="font-bold text-[0.55rem] uppercase tracking-wide">Daily Comic</h4>
+                            <div class="flex-grow border-[1.5px] border-ink bg-white flex items-center justify-center text-gray-400 italic text-[0.6rem]">
+                                [ Daily Panel ]
                             </div>
                         </div>
                         <div class="flex justify-between items-end mt-1">
@@ -418,7 +323,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                                 <img src="https://placehold.co/60x60/fff/333?text=Grid" class="border border-ink" alt="Crossword">
                             </div>
                             <div class="text-[0.55rem] text-right max-w-[120px] bg-black/5 p-1 border border-ink">
-                                <strong>Horoscope:</strong> Today is a good day to avoid updating production servers.
+                                <strong>Horoscope:</strong> A splendid day to review fresh dispatches and drink strong coffee.
                             </div>
                         </div>
                     </div>
@@ -434,31 +339,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div style="column-count: 3; column-gap: 0.5rem; column-rule: 1px solid #aaa;" class="text-[0.45rem] md:text-[0.5rem] leading-tight text-justify h-full overflow-hidden font-sans">
                         <strong class="uppercase block text-center bg-ink text-newsprint mb-1 font-serif">Jobs</strong>
                         <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>SysAdmin Needed:</b> Must know Linux, bash, and ancient arcane rituals to keep the 2012 servers running. Apply downtown.
+                            <b>Pressman:</b> Skilled operator wanted for nightly editions. Apply at Elm Street office.
                         </div>
                         <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>Barista:</b> Fast-paced cafe in Deep Ellum. Must tolerate excessive requests for matcha lattes. $18/hr + tips.
-                        </div>
-                        <strong class="uppercase block text-center bg-ink text-newsprint my-1 font-serif">Real Estate</strong>
-                        <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>1BR Apt Uptown:</b> $2400/mo. "Cozy" (small). Includes access to pool closed 9 months a year. No pets.
-                        </div>
-                        <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>Commercial Space:</b> 2000 sqft in Richardson. Perfect for your next doomed startup.
-                        </div>
-                        <strong class="uppercase block text-center bg-ink text-newsprint my-1 font-serif">Autos</strong>
-                        <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>2015 Honda Civic:</b> 120k miles. AC blows cold. Minor dent. $8k OBO. Don't lowball me.
-                        </div>
-                        <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>1998 Ranger:</b> Runs rough, missing a door. Perfect project car. $500.
+                            <b>Telegraph Operator:</b> Rapid speed required for wire desk.
                         </div>
                         <strong class="uppercase block text-center bg-ink text-newsprint my-1 font-serif">Notices</strong>
                         <div class="mb-1 border-b border-gray-400 border-dashed pb-1">
-                            <b>Lost Dog:</b> Golden Retriever named "Barnaby". Friendly, lacking survival instincts. Call 555-0192.
-                        </div>
-                        <div class="mb-1">
-                            <b>Estate Sale:</b> 4321 Oak Lawn Ave. Antiques, old radios, weird haunted paintings. Sat 8am.
+                            <b>Found:</b> Brass pocket watch in West End plaza. Inquire at front counter.
                         </div>
                     </div>
                 </div>
@@ -472,25 +360,26 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h3 class="font-bold text-xs uppercase tracking-widest text-center mb-2">Dallas / Fort Worth</h3>
 
                         <div class="w-full flex-grow border border-ink mb-2 relative bg-gray-300 min-h-[100px]">
-                            <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Texas+Doppler+Radar" alt="Radar Map" class="w-full h-full object-cover grayscale mix-blend-multiply absolute inset-0">
-                            <div class="absolute top-1 left-1 bg-white/90 p-1 text-[0.5rem] border border-ink font-bold">CURRENT: 68°F (Sunny)</div>
+                            <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Texas+Radar" alt="Radar Map" class="w-full h-full object-cover grayscale mix-blend-multiply absolute inset-0">
+                            <div id="weather-banner" class="absolute top-1 left-1 bg-white/90 p-1 text-[0.5rem] border border-ink font-bold">
+                                CURRENT: 68°F (Sunny)
+                            </div>
                         </div>
 
                         <!-- 7-Day Forecast -->
-                        <div class="grid grid-cols-7 gap-1 text-center font-mono text-[0.45rem] md:text-[0.5rem] mb-2 w-full">
-                            <div class="border border-ink bg-white py-1"><b>MON</b><br>☀️<br>75°</div>
-                            <div class="border border-ink bg-white py-1"><b>TUE</b><br>⛅<br>72°</div>
-                            <div class="border border-ink bg-white py-1"><b>WED</b><br>☁️<br>68°</div>
-                            <div class="border border-ink bg-gray-200 py-1"><b>THU</b><br>🌧️<br>60°</div>
-                            <div class="border border-ink bg-white py-1"><b>FRI</b><br>☀️<br>65°</div>
-                            <div class="border border-ink bg-white py-1"><b>SAT</b><br>☀️<br>70°</div>
-                            <div class="border border-ink bg-white py-1"><b>SUN</b><br>⛅<br>73°</div>
+                        <div id="forecast-grid" class="grid grid-cols-7 gap-1 text-center font-mono text-[0.45rem] md:text-[0.5rem] mb-2 w-full">
+                            <div class="border border-ink bg-white py-1"><b>D1</b><br>☀️<br>72°</div>
+                            <div class="border border-ink bg-white py-1"><b>D2</b><br>⛅<br>70°</div>
+                            <div class="border border-ink bg-white py-1"><b>D3</b><br>☁️<br>68°</div>
+                            <div class="border border-ink bg-white py-1"><b>D4</b><br>🌧️<br>65°</div>
+                            <div class="border border-ink bg-white py-1"><b>D5</b><br>☀️<br>67°</div>
+                            <div class="border border-ink bg-white py-1"><b>D6</b><br>☀️<br>71°</div>
+                            <div class="border border-ink bg-white py-1"><b>D7</b><br>⛅<br>74°</div>
                         </div>
 
-                        <!-- Almanac -->
                         <div class="border-t border-b border-ink py-1 text-[0.5rem] flex justify-between px-1 uppercase font-bold w-full mt-auto">
-                            <span>Sunrise: 7:42 AM</span>
-                            <span>Sunset: 6:40 PM</span>
+                            <span>Dallas, TX Observation</span>
+                            <span class="live-date">Current Edition</span>
                         </div>
                     </div>
                 </div>
@@ -504,13 +393,79 @@ document.addEventListener('DOMContentLoaded', async function() {
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            // 1. Fetch news-data.json with cache-busting timestamp
+            try {
+                const res = await fetch(`./news-data.json?t=${Date.now()}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    
+                    // Set Date
+                    if (data.date) {
+                        document.querySelectorAll('.live-date').forEach(el => el.textContent = data.date);
+                    }
+
+                    // Set Lead Story on Front Page
+                    if (data.dallasNews && data.dallasNews.length > 0) {
+                        const lead = data.dallasNews[0];
+                        document.getElementById('front-headline').textContent = lead.title;
+                        document.getElementById('front-subhead').textContent = `Reported by ${lead.author}`;
+                        document.getElementById('front-body').innerHTML = `<span class="uppercase font-bold text-[0.6rem]">Dallas</span> — ${lead.snippet}`;
+                    }
+
+                    // Populate Metro Stories
+                    if (data.dallasNews && data.dallasNews.length > 1) {
+                        const metroContainer = document.getElementById('metro-stories');
+                        metroContainer.innerHTML = data.dallasNews.slice(1).map(story => `
+                            <div class="mb-3">
+                                <h3 class="font-bold text-sm leading-tight mb-1">${story.title}</h3>
+                                <p>${story.snippet}</p>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Populate Wire Stories
+                    if (data.worldNews && data.worldNews.length > 0) {
+                        const wireContainer = document.getElementById('wire-stories');
+                        wireContainer.innerHTML = data.worldNews.map(item => `
+                            <div class="border-b border-ink pb-2">
+                                <span class="text-[0.45rem] font-bold uppercase tracking-widest bg-ink text-newsprint px-1">THE WIRE</span>
+                                <h3 class="font-bold text-sm leading-tight mt-1">${item.title}</h3>
+                                <p class="mt-1">${item.snippet}</p>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Populate Sports
+                    if (data.sports) {
+                        document.getElementById('sports-headline').textContent = data.sports.title;
+                        document.getElementById('sports-status').textContent = `Game Status: ${data.sports.status}`;
+                    }
+
+                    // Populate Weather
+                    if (data.weather) {
+                        document.getElementById('weather-banner').textContent = `CURRENT: ${data.weather.temp}°F (DFW Airport)`;
+                        
+                        if (data.weather.daily && data.weather.daily.temperature_2m_max) {
+                            const grid = document.getElementById('forecast-grid');
+                            grid.innerHTML = data.weather.daily.temperature_2m_max.slice(0, 7).map((maxTemp, idx) => `
+                                <div class="border border-ink bg-white py-1">
+                                    <b>DAY ${idx + 1}</b><br>☀️<br>${Math.round(maxTemp)}°
+                                </div>
+                            `).join('');
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn("Could not load dynamic edition, displaying base print.", err);
+            }
+
+            // 2. Initialize St.PageFlip AFTER dynamic text is injected
             const flipBookElement = document.getElementById('flip-book');
             const pageIndicator = document.getElementById('page-indicator');
             const btnPrev = document.getElementById('btn-prev');
             const btnNext = document.getElementById('btn-next');
             
-            // Initialize St.PageFlip
             const pageFlip = new St.PageFlip(flipBookElement, {
                 width: 420, 
                 height: 580,
@@ -525,32 +480,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                 usePortrait: true
             });
 
-            // Load pages from the DOM
             pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
-            // Center single cover pages vs 2-page spreads
             const updateUI = () => {
                 const orientation = pageFlip.getOrientation();
                 const pageIndex = pageFlip.getCurrentPageIndex();
                 const totalPages = pageFlip.getPageCount();
 
-                // 1. Shift book horizontally to center single covers in spread mode
                 if (orientation === 'portrait') {
                     flipBookElement.style.transform = 'translateX(0)';
                 } else {
                     if (pageIndex === 0) {
-                        // Front cover is on the right half; shift left to center
                         flipBookElement.style.transform = 'translateX(-25%)';
                     } else if (pageIndex >= totalPages - 1) {
-                        // Back cover is on the left half; shift right to center
                         flipBookElement.style.transform = 'translateX(25%)';
                     } else {
-                        // Regular two-page spread
                         flipBookElement.style.transform = 'translateX(0)';
                     }
                 }
 
-                // 2. Update status indicator text
                 if (pageIndex === 0) {
                     pageIndicator.textContent = `FRONT COVER (1 of ${totalPages})`;
                 } else if (pageIndex >= totalPages - 1) {
@@ -561,33 +509,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                     pageIndicator.textContent = `PAGE ${pageIndex + 1} OF ${totalPages}`;
                 }
 
-                // 3. Update button states
                 btnPrev.disabled = (pageIndex === 0);
                 btnNext.disabled = (pageIndex >= totalPages - 1);
             };
 
-            // Event Listeners
             pageFlip.on('flip', () => updateUI());
             pageFlip.on('changeOrientation', () => updateUI());
             pageFlip.on('changeState', (e) => {
                 if (e.data === 'read') updateUI();
             });
 
-            // Reveal the book once initialized
             flipBookElement.classList.add('is-ready');
             updateUI();
 
-            // Controls
             btnPrev.addEventListener('click', () => pageFlip.flipPrev());
             btnNext.addEventListener('click', () => pageFlip.flipNext());
 
-            // Keyboard navigation
             window.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-                    pageFlip.flipNext();
-                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-                    pageFlip.flipPrev();
-                }
+                if (e.key === 'ArrowRight' || e.key === 'PageDown') pageFlip.flipNext();
+                if (e.key === 'ArrowLeft' || e.key === 'PageUp') pageFlip.flipPrev();
             });
         });
     </script>
