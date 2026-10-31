@@ -1,67 +1,67 @@
 {
-  "date": "Friday, October 30, 2026",
+  "date": "Saturday, October 31, 2026",
   "weather": {
-    "temp": 69,
-    "wind": 4.6,
+    "temp": 67,
+    "wind": 10.2,
     "daily": {
       "time": [
-        "2026-10-30",
         "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
-        "2026-11-05"
+        "2026-11-05",
+        "2026-11-06"
       ],
       "temperature_2m_max": [
-        76.3,
-        76.5,
-        80.4,
-        85.7,
-        76.3,
-        71.1,
-        74.1
+        77.5,
+        78.8,
+        87.8,
+        77.1,
+        73.1,
+        79,
+        72.3
       ],
       "temperature_2m_min": [
-        67.5,
-        66.2,
-        65.5,
-        70,
-        64.9,
-        62,
-        59.9
+        64.7,
+        65.2,
+        71.2,
+        65.9,
+        59.5,
+        64,
+        60.4
       ],
       "weathercode": [
-        53,
         3,
-        3,
+        45,
         51,
         95,
-        2,
+        3,
+        3,
         3
       ]
     }
   },
   "worldNews": [
     {
-      "title": "Residents leave devastated Russian-occupied Oleshky as evacuation corridor opens",
-      "snippet": "Several hundred people are understood to have decided to stay in the frontline town, despite the lack of gas, electricity and running water....",
+      "title": "US approves sale of 500 Patriot missiles to Ukraine",
+      "snippet": "The American-made interceptors are the only effective weapon for downing Russia's ballistic missiles....",
       "author": "Staff Wire"
     },
     {
-      "title": "Mushroom murderer fails to overturn convictions in Australian court challenge",
-      "snippet": "Erin Patterson argued her trial was unfair due to seven grounds but three appeal judges dismissed them all....",
+      "title": "Crypto giant Binance attempting to recover $6.3bn stolen in hack linked to North Korea",
+      "snippet": "The cyber-attack, which the company describes as complex, is believed to be the largest ever of its kind....",
       "author": "Staff Wire"
     },
     {
-      "title": "Syrians struggle with soaring prices as crisis challenges post-Assad recovery",
-      "snippet": "End of subsidies and rising prices drive discontent, testing support for Ahmed al-Sharaa's government....",
+      "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
+      "snippet": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks Season Update",
-    "status": "Off-day"
+    "title": "Houston Rockets at Dallas Mavericks",
+    "status": "Final"
   }
 }
