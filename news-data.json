@@ -1,67 +1,67 @@
 {
-  "date": "Saturday, October 31, 2026",
+  "date": "Sunday, November 1, 2026",
   "weather": {
-    "temp": 67,
-    "wind": 10.2,
+    "temp": 63,
+    "wind": 0.8,
     "daily": {
       "time": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "temperature_2m_max": [
-        77.5,
-        78.8,
-        87.8,
-        77.1,
-        73.1,
-        79,
-        72.3
+        79.3,
+        80.7,
+        74.9,
+        77,
+        77,
+        74.7,
+        79.5
       ],
       "temperature_2m_min": [
-        64.7,
-        65.2,
-        71.2,
-        65.9,
-        59.5,
-        64,
-        60.4
+        62.5,
+        63.9,
+        65.8,
+        64.6,
+        61.2,
+        63.5,
+        64.6
       ],
       "weathercode": [
-        3,
         45,
-        51,
+        3,
         95,
         3,
         3,
+        2,
         3
       ]
     }
   },
   "worldNews": [
     {
-      "title": "US approves sale of 500 Patriot missiles to Ukraine",
-      "snippet": "The American-made interceptors are the only effective weapon for downing Russia's ballistic missiles....",
+      "title": "Shops looted as German cost of living protests turn violent",
+      "snippet": "The protests in cities across Germany - including Berlin, Hamburg and Frankfurt - came on the same day hundreds of thousands also protested in France....",
       "author": "Staff Wire"
     },
     {
-      "title": "Crypto giant Binance attempting to recover $6.3bn stolen in hack linked to North Korea",
-      "snippet": "The cyber-attack, which the company describes as complex, is believed to be the largest ever of its kind....",
+      "title": "'We came back from hell', say Ukrainians after years in Russia-occupied front-line city",
+      "snippet": "One evacuated couple says they crossed minefields in Oleshky in search of food....",
       "author": "Staff Wire"
     },
     {
-      "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
-      "snippet": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become....",
+      "title": "Ukrainian evacuees reunite with family after years trapped in Russia-occupied city",
+      "snippet": "Oleshky residents had been without food, water and electricity, with many resorting to cooking garden weeds to survive....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Houston Rockets at Dallas Mavericks",
-    "status": "Final"
+    "title": "Dallas Mavericks Season Update",
+    "status": "Off-day"
   }
 }
