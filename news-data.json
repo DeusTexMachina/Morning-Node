@@ -1,67 +1,67 @@
 {
-  "date": "Sunday, November 8, 2026",
+  "date": "Monday, November 9, 2026",
   "weather": {
-    "temp": 59,
-    "wind": 4.7,
+    "temp": 56,
+    "wind": 4.2,
     "daily": {
       "time": [
-        "2026-11-08",
         "2026-11-09",
         "2026-11-10",
         "2026-11-11",
         "2026-11-12",
         "2026-11-13",
-        "2026-11-14"
+        "2026-11-14",
+        "2026-11-15"
       ],
       "temperature_2m_max": [
-        72.3,
-        73.7,
-        71.1,
-        79,
-        68.2,
-        56.8,
-        67
+        72.4,
+        75.5,
+        79.7,
+        73.4,
+        68.3,
+        76.9,
+        72.5
       ],
       "temperature_2m_min": [
-        56.9,
-        50,
-        64.1,
-        62.5,
-        53.1,
-        46.3,
-        48.3
+        55,
+        61.4,
+        63.7,
+        59.9,
+        55.8,
+        57.1,
+        63.3
       ],
       "weathercode": [
         3,
+        63,
+        0,
+        0,
+        0,
         3,
-        61,
-        0,
-        0,
-        0,
-        1
+        61
       ]
     }
   },
   "worldNews": [
     {
-      "title": "What we know so far after Krakow gun attack",
-      "snippet": "Six people were killed in a random shooting in Krakow's main square, and three bodies were later found at the home of the attacker....",
+      "title": "Krakow shooting suspect has died in hospital, police say",
+      "snippet": "At least six people were killed in the shooting, and three bodies of the suspect's family members were found at their home....",
       "author": "Staff Wire"
     },
     {
-      "title": "Houthis say at least 33 killed in Saudi air strike",
-      "snippet": "Saudi Arabia, which leads a coalition fighting the Houthis in Yemen, has not commented....",
+      "title": "Inside the French drug gangs recruiting children to kill",
+      "snippet": "The BBC enters Marseille's dangerous underworld, where young people are trapped, brutalised and exploited....",
       "author": "Staff Wire"
     },
     {
-      "title": "'Flat', 'tired', 'cynical': Unusually gloomy Kiwis deliver New Zealand's tightest election in years",
-      "snippet": "The national mood is low, and faith in politics even lower - with voters deserting the major parties at the polls....",
+      "title": "Trump says he was 'kidding' about Dana White press secretary offer",
+      "snippet": "The president told the Ultimate Fighting Championship boss to \"please take the job\" in a Truth Social post on Saturday....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks Season Update",
-    "status": "Off-day"
+    "title": "Brooklyn Nets at Dallas Mavericks",
+    "status": "Final"
   }
 }
