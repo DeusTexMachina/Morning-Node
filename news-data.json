@@ -1,67 +1,67 @@
 {
-  "date": "Sunday, November 15, 2026",
+  "date": "Monday, November 16, 2026",
   "weather": {
     "temp": 48,
-    "wind": 13.4,
+    "wind": 3.9,
     "daily": {
       "time": [
-        "2026-11-15",
         "2026-11-16",
         "2026-11-17",
         "2026-11-18",
         "2026-11-19",
         "2026-11-20",
-        "2026-11-21"
+        "2026-11-21",
+        "2026-11-22"
       ],
       "temperature_2m_max": [
-        50.7,
-        56,
-        63.3,
-        67.6,
-        69,
-        72.5,
-        67
+        59.3,
+        62.5,
+        67.3,
+        71.1,
+        72.2,
+        70.5,
+        69.8
       ],
       "temperature_2m_min": [
-        46.1,
-        46.3,
-        49.1,
-        52.5,
-        60.6,
-        57.4,
-        61.3
+        45.2,
+        40.4,
+        51.5,
+        56.4,
+        57.6,
+        60,
+        58.7
       ],
       "weathercode": [
-        63,
+        3,
+        2,
         3,
         3,
-        3,
-        3,
-        3,
-        55
+        0,
+        51,
+        51
       ]
     }
   },
   "worldNews": [
     {
-      "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
-      "snippet": "The US has not confirmed the Ukrainian president's comments - a US official told the BBC \"many ideas continue to be discussed\"....",
+      "title": "Yemeni forces retreat to defend port city from Houthis",
+      "snippet": "Saudi-backed forces say they are moving troops from the Bab al-Mandab Strait to protect the interim capital, Aden....",
       "author": "Staff Wire"
     },
     {
-      "title": "Copper wire upgrade behind US flight suspension, transport secretary says",
-      "snippet": "The US government is trying to find out whether the chaos was caused by \"incompetence\" or faulty equipment....",
+      "title": "Five EU countries expected to announce migrant deportation centre in Rwanda",
+      "snippet": "Germany, Denmark, Austria, Greece and the Netherlands are expected to announce a \"return hub\" for failed asylum seekers....",
       "author": "Staff Wire"
     },
     {
-      "title": "Judge temporarily blocks Trump from closing Washington DC golf course for renovation",
-      "snippet": "It is the latest development in a months-long challenge to the US president's plans for East Potomac Golf Links....",
+      "title": "UK and allies call on Israel to allow rapid humanitarian access to Gaza",
+      "snippet": "The UK, Australia, Canada and Italy say Israeli authorities are holding back vital supplies at the borders, including 150,00 tents....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks at Cleveland Cavaliers",
+    "title": "Dallas Mavericks at Boston Celtics",
     "status": "Final"
   }
 }
