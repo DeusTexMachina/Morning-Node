@@ -1,67 +1,29 @@
 {
-  "date": "Monday, November 16, 2026",
+  "date": "Tuesday, November 17, 2026",
   "weather": {
-    "temp": 48,
-    "wind": 3.9,
-    "daily": {
-      "time": [
-        "2026-11-16",
-        "2026-11-17",
-        "2026-11-18",
-        "2026-11-19",
-        "2026-11-20",
-        "2026-11-21",
-        "2026-11-22"
-      ],
-      "temperature_2m_max": [
-        59.3,
-        62.5,
-        67.3,
-        71.1,
-        72.2,
-        70.5,
-        69.8
-      ],
-      "temperature_2m_min": [
-        45.2,
-        40.4,
-        51.5,
-        56.4,
-        57.6,
-        60,
-        58.7
-      ],
-      "weathercode": [
-        3,
-        2,
-        3,
-        3,
-        0,
-        51,
-        51
-      ]
-    }
+    "temp": 72,
+    "wind": 5
   },
   "worldNews": [
     {
-      "title": "Yemeni forces retreat to defend port city from Houthis",
-      "snippet": "Saudi-backed forces say they are moving troops from the Bab al-Mandab Strait to protect the interim capital, Aden....",
+      "title": "Crimean Bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
+      "snippet": "Ukraine says the attack took weeks to plan, while the Kremlin vows to rebuild the strategic bridge....",
       "author": "Staff Wire"
     },
     {
-      "title": "Five EU countries expected to announce migrant deportation centre in Rwanda",
-      "snippet": "Germany, Denmark, Austria, Greece and the Netherlands are expected to announce a \"return hub\" for failed asylum seekers....",
+      "title": "Ukraine accuses Russia of targeting rescue operation after 'double-tap' strike kills 72",
+      "snippet": "Efforts to recover bodies after a “double-tap” attack in southern Ukraine are being hampered by continuing Russian strikes, officials say....",
       "author": "Staff Wire"
     },
     {
-      "title": "UK and allies call on Israel to allow rapid humanitarian access to Gaza",
-      "snippet": "The UK, Australia, Canada and Italy say Israeli authorities are holding back vital supplies at the borders, including 150,00 tents....",
+      "title": "Indian woman gang-raped while pregnant in 2002 'heartbroken' after two perpetrators bailed",
+      "snippet": "Bilkis Bano has spoken of her \"pain, shock and disbelief\" at the top court order and vowed to fight back....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks at Boston Celtics",
-    "status": "Final"
+    "title": "Dallas Mavericks Season Update",
+    "status": "Off-day"
   }
 }
