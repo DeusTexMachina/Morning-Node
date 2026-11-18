@@ -1,23 +1,61 @@
 {
-  "date": "Tuesday, November 17, 2026",
+  "date": "Wednesday, November 18, 2026",
   "weather": {
-    "temp": 72,
-    "wind": 5
+    "temp": 44,
+    "wind": 2.9,
+    "daily": {
+      "time": [
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24"
+      ],
+      "temperature_2m_max": [
+        68.7,
+        70.2,
+        72.8,
+        74.7,
+        67,
+        64.6,
+        59.6
+      ],
+      "temperature_2m_min": [
+        43.3,
+        47.7,
+        58.3,
+        59.8,
+        57.4,
+        52.3,
+        50
+      ],
+      "weathercode": [
+        3,
+        3,
+        3,
+        53,
+        53,
+        3,
+        3
+      ]
+    }
   },
   "worldNews": [
     {
-      "title": "Crimean Bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
-      "snippet": "Ukraine says the attack took weeks to plan, while the Kremlin vows to rebuild the strategic bridge....",
+      "title": "As Trump and Xi meet, China's AI dreams face an unexpected hurdle: the Nvidia spy scandal",
+      "snippet": "China worries the scandal could ramp up pressure on the US  to further restrict the sale of advanced chips....",
       "author": "Staff Wire"
     },
     {
-      "title": "Ukraine accuses Russia of targeting rescue operation after 'double-tap' strike kills 72",
-      "snippet": "Efforts to recover bodies after a “double-tap” attack in southern Ukraine are being hampered by continuing Russian strikes, officials say....",
+      "title": "Nvidia says it won't reinstate Huang as it reports soaring sales",
+      "snippet": "The AI chip giant reported strong quarterly earnings on Tuesday after the dramatic exit of Jensen Huang....",
       "author": "Staff Wire"
     },
     {
-      "title": "Indian woman gang-raped while pregnant in 2002 'heartbroken' after two perpetrators bailed",
-      "snippet": "Bilkis Bano has spoken of her \"pain, shock and disbelief\" at the top court order and vowed to fight back....",
+      "title": "Rubio says US not 'under systemic attack' after series of tech outages",
+      "snippet": "Secretary of State Marco Rubio said there was \"zero evidence\" supporting theories online that recent disruptions affecting Microsoft, banks and flights are connected....",
       "author": "Staff Wire"
     }
   ],
