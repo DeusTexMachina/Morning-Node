@@ -1,42 +1,42 @@
 {
-  "date": "Wednesday, November 18, 2026",
+  "date": "Thursday, November 19, 2026",
   "weather": {
-    "temp": 44,
-    "wind": 2.9,
+    "temp": 50,
+    "wind": 7.2,
     "daily": {
       "time": [
-        "2026-11-18",
         "2026-11-19",
         "2026-11-20",
         "2026-11-21",
         "2026-11-22",
         "2026-11-23",
-        "2026-11-24"
+        "2026-11-24",
+        "2026-11-25"
       ],
       "temperature_2m_max": [
-        68.7,
-        70.2,
+        70.7,
         72.8,
-        74.7,
-        67,
-        64.6,
-        59.6
+        75.1,
+        67.6,
+        63.7,
+        58.9,
+        58.7
       ],
       "temperature_2m_min": [
-        43.3,
-        47.7,
-        58.3,
-        59.8,
-        57.4,
-        52.3,
-        50
+        49.5,
+        51.2,
+        60.9,
+        56.6,
+        51.1,
+        50.7,
+        48
       ],
       "weathercode": [
         3,
         3,
-        3,
         53,
-        53,
+        51,
+        2,
         3,
         3
       ]
@@ -44,24 +44,24 @@
   },
   "worldNews": [
     {
-      "title": "As Trump and Xi meet, China's AI dreams face an unexpected hurdle: the Nvidia spy scandal",
-      "snippet": "China worries the scandal could ramp up pressure on the US  to further restrict the sale of advanced chips....",
+      "title": "This is a remarkable diplomatic moment for China's Xi - but it comes with pitfalls",
+      "snippet": "The meeting comes with challenges as there are things Xi does not appear keen to discuss with Putin and Trump....",
       "author": "Staff Wire"
     },
     {
-      "title": "Nvidia says it won't reinstate Huang as it reports soaring sales",
-      "snippet": "The AI chip giant reported strong quarterly earnings on Tuesday after the dramatic exit of Jensen Huang....",
+      "title": "Dozens missing after boat carrying 100 migrants sinks off Senegal's coast",
+      "snippet": "Some local media report that at least four bodies have been recovered....",
       "author": "Staff Wire"
     },
     {
-      "title": "Rubio says US not 'under systemic attack' after series of tech outages",
-      "snippet": "Secretary of State Marco Rubio said there was \"zero evidence\" supporting theories online that recent disruptions affecting Microsoft, banks and flights are connected....",
+      "title": "Anthropic raises $81bn in record-breaking stock market debut",
+      "snippet": "The company behind the Claude chatbot will become one of the most valuable firms in the world....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks Season Update",
-    "status": "Off-day"
+    "title": "Golden State Warriors at Dallas Mavericks",
+    "status": "Final"
   }
 }
