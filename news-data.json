@@ -1,67 +1,67 @@
 {
-  "date": "Saturday, November 21, 2026",
+  "date": "Sunday, November 22, 2026",
   "weather": {
-    "temp": 62,
-    "wind": 8.6,
+    "temp": 63,
+    "wind": 5.3,
     "daily": {
       "time": [
-        "2026-11-21",
         "2026-11-22",
         "2026-11-23",
         "2026-11-24",
         "2026-11-25",
         "2026-11-26",
-        "2026-11-27"
+        "2026-11-27",
+        "2026-11-28"
       ],
       "temperature_2m_max": [
-        73.4,
-        66.9,
-        62.1,
-        56.1,
-        54,
-        60.3,
-        57.7
+        68.4,
+        58.9,
+        53,
+        54.5,
+        59.4,
+        62.2,
+        68.8
       ],
       "temperature_2m_min": [
-        59.6,
-        50.8,
-        49.5,
-        46.5,
-        43.8,
-        45.3,
-        48.4
+        46.7,
+        41.1,
+        43.9,
+        41.5,
+        46.2,
+        49.4,
+        51.7
       ],
       "weathercode": [
         3,
         3,
-        1,
-        51,
+        53,
         3,
         3,
-        3
+        3,
+        2
       ]
     }
   },
   "worldNews": [
     {
-      "title": "Tech stock sell-off drags markets down as Anthropic shares slide",
-      "snippet": "Pressures weighed on US markets, with the S&amp;P 500 and the Dow Jones Industrial Average pushed into correction territory....",
+      "title": "South Korea education minister resigns over exam cheating scandal",
+      "snippet": "Choi Kyo-jin admits last-minute measures to stop AI-assisted cheating during the college entrance exam caused chaos....",
       "author": "Staff Wire"
     },
     {
-      "title": "Zelensky says Putin is a 'killer' after Trump calls Russian leader a friend",
-      "snippet": "Earlier this week, Trump greeted Putin ahead of a meeting in China and said the pair have a \"great relationship\"....",
+      "title": "Russia-bound ship still on fire after attack in Gulf of Finland",
+      "snippet": "Finnish defence forces say that Ukraine was likely behind the drone attack on the vessel....",
       "author": "Staff Wire"
     },
     {
-      "title": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
-      "snippet": "Countries from nearly 200 countries are in a deadlock to try and get a new global climate agreement....",
+      "title": "Mexican drug lord on FBI's 10 most wanted list arrested in shoot-out",
+      "snippet": "Fausto Isidro \"Chapo Idisro\" Meza Flores, who is accused of drug trafficking and torture, is detained after gun fight with authorities....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks Season Update",
-    "status": "Off-day"
+    "title": "LA Clippers at Dallas Mavericks",
+    "status": "Final"
   }
 }
