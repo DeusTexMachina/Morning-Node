@@ -1,67 +1,29 @@
 {
-  "date": "Monday, November 23, 2026",
+  "date": "Tuesday, November 24, 2026",
   "weather": {
-    "temp": 47,
-    "wind": 12.7,
-    "daily": {
-      "time": [
-        "2026-11-23",
-        "2026-11-24",
-        "2026-11-25",
-        "2026-11-26",
-        "2026-11-27",
-        "2026-11-28",
-        "2026-11-29"
-      ],
-      "temperature_2m_max": [
-        58.7,
-        51.1,
-        54.9,
-        57,
-        61.3,
-        67.3,
-        72.7
-      ],
-      "temperature_2m_min": [
-        44,
-        37.6,
-        41.8,
-        44,
-        48,
-        50,
-        56.3
-      ],
-      "weathercode": [
-        3,
-        3,
-        3,
-        3,
-        3,
-        1,
-        2
-      ]
-    }
+    "temp": 72,
+    "wind": 5
   },
   "worldNews": [
     {
-      "title": "Longest-ever UN climate talks end with no deal as deep divisions exposed",
-      "snippet": "The prime minister of Australia, which co-hosted COP31, attributed the failure to \"difficult geopolitical times\"....",
+      "title": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang",
+      "snippet": "Nvidia had come under pressure from President Trump to reappoint Huang, whose comeback helped add $1tn to the company's stock value....",
       "author": "Staff Wire"
     },
     {
-      "title": "Five takeaways from the failed climate talks COP31",
-      "snippet": "The COP31 summit in Antalya was the longest-running climate talks in UN history....",
+      "title": "What Jensen Huang's return teaches China's Xi about Trump",
+      "snippet": "Huang being back at the helm of Nvidia is no guarantee of relief for Beijing....",
       "author": "Staff Wire"
     },
     {
-      "title": "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say",
-      "snippet": "Eleven people are dead in the attack on Dymer, with rescue efforts ongoing to find those still missing from the residential building....",
+      "title": "Nato chief vows defence against space threat after Russian nuclear satellite reports",
+      "snippet": "German media said Russia planned to launch a satellite with a nuclear warhead into space in coming weeks....",
       "author": "Staff Wire"
     }
   ],
   "dallasNews": [],
   "sports": {
-    "title": "Dallas Mavericks at Utah Jazz",
-    "status": "Final"
+    "title": "Dallas Mavericks Season Update",
+    "status": "Off-day"
   }
 }
